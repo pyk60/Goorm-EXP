@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Instagram</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <header class="header">
+                <img src="images/icon/logo.svg" alt="Instagram logo">
+            </header>
+            
+            <!-- 왼쪽 사이드바 -->
+            <nav>
+                <a href="#">
+                    <img src="images/icon/icon_home.png" alt="Home" style="width: 20px; height: 20px;"> Home
+                </a>
+                <a href="#">
+                    <img src="images/icon/icon_explore.png" alt="Explore"> Explore
+                </a>
+                <a href="#">
+                    <img src="images/icon/icon_messages.png" alt="Messages"> Messages
+                </a>
+                <a href="#">
+                    <img src="images/icon/icon_Notifications.png" alt="Notifications"> Notifications
+                </a>
+                <a href="#">
+                    <img src="images/icon/icon_create.png" alt="Create"> Create
+                </a>
+            </nav>
+        </div>
+
+        <main class="feed">
+            <div id="stories" class="stories"></div>
+            <div class="gallery"></div>
+        </main>
+
+        <!-- 오른쪽 사이드메뉴 -->
+        <div class="side-menu">
+            <div class="side-menu_user-profile">
+                <a href="#" class="side-menu_user-avatar">
+                    <img src="images/photo/profile.png" alt="user picture"/>
+                </a>
+                <div class="side-menu_user-info">
+                    <a href="#">Username</a>
+                    <span>pykyk60</span>
+                </div>
+                <button class="side-menu_user-button">
+                    Switch
+                </button>
+            </div>
+            <div class="side-menu_suggestions-section">
+                <div class="side-menu_suggestions-header">
+                    <h2>Suggestions for you</h2>
+                    <button>See All</button>
+                </div>
+                <div class="side-menu_suggestions-content">
+                    <div class="side-menu_suggestion">
+                        <a href="#" class="side-menu_suggestion-avatar">
+                            <img src="images/photo/profile.png" alt="user picture"/>
+                        </a>
+                        <div class="side-menu_suggestion-info">
+                            <a href="#">
+                                John
+                            </a>
+                            <span>Followed by user2, user3 and others</span>
+                        </div>
+                        <button class="side-menu_suggestion-button">Follow</button>
+                    </div>
+                    <div class="side-menu_suggestion">
+                        <a href="#" class="side-menu_suggestion-avatar">
+                            <img src="images/photo/profile.png" alt="user picture"/>
+                        </a>
+                        <div class="side-menu_suggestion-info">
+                            <a href="#">
+                                Anna
+                            </a>
+                            <span>Followed by user4, user5 and others</span>
+                        </div>
+                        <button class="side-menu_suggestion-button">Follow</button>
+                    </div>
+                </div>
+            </div>
+            <div class="side-menu_footer">
+                <div class="side-menu_footer-links">
+                    <ul class="side-menu_footer_list">
+                        <li><a class="side-menu_footer-link" href="#">About</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Help</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Press</a></li>
+                        <li><a class="side-menu_footer-link" href="#">API</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Jobs</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Privacy</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Terms</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Locations</a></li>
+                        <li><a class="side-menu_footer-link" href="#">Language</a></li>
+                    </ul>
+                </div>
+                <span class="side-menu_footer-copyright">&copy; 2023 instagram from facebook</span>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <script>
+        const storiesData = [
+            { username: "UserA", avatar: "images/photo/profile.png" },
+            { username: "UserB", avatar: "images/photo/profile.png" },
+            { username: "UserC", avatar: "images/photo/profile.png" },
+            { username: "UserD", avatar: "images/photo/profile.png" }
+        ];
+        const posts = [
+            {
+                username: "User1",
+                avatar: "images/photo/profile.png",
+                postImage: "images/photo/photo.jpg",
+                caption: "Good!",
+                likes: 100,
+                comments: []
+            },
+            {
+                username: "User2",
+                avatar: "images/photo/profile.png",
+                postImage: "images/photo/photo.jpg",
+                caption: "Hello World!",
+                likes: 150,
+                comments: []
+            }
+        ];
+
+
+        const storiesContainer = document.getElementById('stories');
+
+        storiesData.forEach(story => {
+            const storyEl = document.createElement('div');
+            storyEl.className = 'story';
+            storyEl.innerHTML = `
+                <img src="${story.avatar}" alt="">
+                <span>${story.username}</span>
+            `;
+            storiesContainer.appendChild(storyEl);
+        });
+
+
+        const gallery = document.querySelector('.gallery');
+        posts.forEach(post => {
+            const postElement = document.createElement('div');
+            postElement.className = 'post';
+            postElement.innerHTML = `
+                <div class="user">
+                    <img src="${post.avatar}">
+                    <p>${post.username}</p>
+                </div>
+                <img class="post-image" src="${post.postImage}">
+                <div class="actions">
+                    <div>
+                        <img src="images/like.png" width="20">
+                        <img src="images/comment.png" width="20">
+                        <img src="images/send.png" width="20">
+                    </div>
+                    <img src="images/save.png" width="20">
+                </div>
+                <div class="info">
+                    <p><strong>좋아요 ${post.likes}개</strong></p>
+                    <p><strong>${post.username}</strong> ${post.caption}</p>
+                </div>
+                <div class="comments">
+                    <div class="comment-list">
+                        ${post.comments.map(c => `<p>${c}</p>`).join('')}
+                    </div>
+                </div>
+            `;
+            const commentInput = document.createElement('input');
+            commentInput.type = 'text';
+            commentInput.placeholder = '댓글 달기...';
+            commentInput.onkeypress = function(e) {
+                if(e.key === 'Enter') {
+                    const commentText = commentInput.value.trim();
+                    if(commentText) {
+                        post.comments.push(commentText);
+                        const commentList = postElement.querySelector('.comment-list');
+                        commentList.innerHTML += `<p>${commentText}</p>`;
+                        commentInput.value = '';
+                    }
+                }
+            };
+            postElement.appendChild(commentInput);
+            gallery.appendChild(postElement);
+        });
+    </script>
+</body>
+</html>
