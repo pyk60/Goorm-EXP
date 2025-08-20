@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="left-section">
+            <img class="hamburger-menu" src="assets/icons/hamburger-menu.png">
+            <img class="youtube-logo" src="assets/icons/youtube-logo.png">
+        </div>
+        <div class="middle-section">
+            <input class="search-bar" type="text" placeholder="Search">
+            <button class="search-button">
+                <img class="search-icon" src="assets/icons/search.png">
+                <div class="tooltip">Search</div>
+            </button>
+            <button class="voice-search-button">
+                <img class="voice-search-icon" src="assets/icons/voice-search-icon.png">
+                <div class="tooltip">Search with your voice</div>
+            </button>
+        </div>
+        <div class="right-section">
+            <div class="upload-icon-container">
+                <button class="upload-btn">+ 만들기</button>
+                <div class="tooltip">Create</div>
+            </div>
+            <div class="notifications-icon-container">
+                <img class="notifications-icon" src="assets/icons/notifications.png">
+                <div class="notifications-count">1</div>
+            </div>
+            <img class="current-user-picture" src="assets/images/avatar-1.png">
+        </div>
+    </header>
+
+    <div class="category-bar">
+        <div class="category">전체</div>
+        <div class="category">음악</div>
+        <div class="category">라이브</div>
+        <div class="category">최근에 업로드된 동영상</div>
+        <div class="category">새로운 맞춤 동영상</div>
+    </div>
+
+    <nav class="sidebar">
+        <div class="sidebar-link">
+            <img src="assets/icons/home.png">
+            <div>홈</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="assets/icons/Youtube_shorts_icon.svg.png">
+            <div>Shorts</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="assets/icons/subscriptions.png">
+            <div>구독</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="assets/icons/mypage-icon.png">
+            <div>내 페이지</div>
+        </div>
+        <div class="sidebar-link">
+            <img src="assets/icons/download.png">
+            <div>저장 동영상</div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <section class="video-grid" id="video-grid-1">
+        </section>
+
+
+        <section class="shorts-section">
+            <div class="shorts-header">
+                <img class="shorts-icon" src="assets/icons/Youtube_shorts_icon.svg.png" alt="Shorts">
+                <div>Shorts</div>
+            </div>
+            <div class="shorts-grid">
+            </div>
+        </section>
+
+        <section class="video-grid" id="video-grid-2">
+        </section>
+    </main>
+
+    <script>
+        const videosData1 = [
+            {
+                thumbnail: 'assets/images/thumbnail-1.jpg',
+                time: '28:20',
+                profile: 'assets/images/avatar-1.png',
+                title: '🎧𝗽𝗹𝗮𝘆𝗹𝗶𝘀𝘁🎧아침 준비🔥 플레이리스트',
+                author: '아이디(1)',
+                stats: '조회수 70만회 · 1개월 전'
+            },
+            {
+                thumbnail: 'assets/images/thumbnail-2.jpg',
+                time: '42:20',
+                profile: 'assets/images/avatar-1.png',
+                title: '[귀여운동물모음집]💞귀여운 동물 보고 싶은 사람 이 영상이면 다 끝',
+                author: '아이디(2)',
+                stats: '조회수 9.6만회 · 2시간 전'
+            },
+            {
+                thumbnail: 'assets/images/thumbnail-3.jpg',
+                time: '10:05',
+                profile: 'assets/images/avatar-1.png',
+                title: '캐릭캐릭체인지 [4K][애니리뷰]',
+                author: '아이디(3)',
+                stats: '조회수 1.1만회 · 4개월 전'
+            }
+            ];
+
+            const videoGrid1 = document.querySelector('.video-grid');
+
+            videosData1.forEach(video => {
+            const div = document.createElement('div');
+            div.className = 'video-preview';
+            div.innerHTML = `
+                <div class="thumbnail-row">
+                <img class="thumbnail" src="${video.thumbnail}">
+                <div class="video-time">${video.time}</div>
+                </div>
+                <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="${video.profile}">
+                </div>
+                <div class="video-info">
+                    <p class="video-title">${video.title}</p>
+                    <p class="video-author">${video.author}</p>
+                    <p class="video-stats">${video.stats}</p>
+                </div>
+                </div>
+            `;
+            videoGrid1.appendChild(div);
+            });
+
+
+            const videosData2 = [
+            {
+                thumbnail: 'assets/images/thumbnail-1.jpg',
+                time: '28:20',
+                profile: 'assets/images/avatar-1.png',
+                title: '🎧𝗽𝗹𝗮𝘆𝗹𝗶𝘀𝘁🎧아침 준비🔥 플레이리스트',
+                author: '아이디(4)',
+                stats: '조회수 70만회 · 1개월 전'
+            },
+            {
+                thumbnail: 'assets/images/thumbnail-2.jpg',
+                time: '42:20',
+                profile: 'assets/images/avatar-1.png',
+                title: '[귀여운동물모음집]💞귀여운 동물 보고 싶은 사람 이 영상이면 다 끝',
+                author: '아이디(5)',
+                stats: '조회수 9.6만회 · 2시간 전'
+            },
+            {
+                thumbnail: 'assets/images/thumbnail-3.jpg',
+                time: '10:05',
+                profile: 'assets/images/avatar-1.png',
+                title: '캐릭캐릭체인지 [4K][애니리뷰]',
+                author: '아이디(6)',
+                stats: '조회수 1.1만회 · 4개월 전'
+            },
+            {
+                thumbnail: 'assets/images/thumbnail-3.jpg',
+                time: '10:05',
+                profile: 'assets/images/avatar-1.png',
+                title: '캐릭캐릭체인지 [4K][애니리뷰]',
+                author: '아이디(7)',
+                stats: '조회수 1.1만회 · 4개월 전'
+            },
+            {
+                thumbnail: 'assets/images/thumbnail-1.jpg',
+                time: '28:20',
+                profile: 'assets/images/avatar-1.png',
+                title: '🎧𝗽𝗹𝗮𝘆𝗹𝗶𝘀𝘁🎧아침 준비🔥 플레이리스트',
+                author: '아이디(8)',
+                stats: '조회수 70만회 · 1개월 전'
+            }
+            ];
+
+            const videoGrid2 = document.getElementById('video-grid-2');
+            videosData2.forEach(video => {
+            const div = document.createElement('div');
+            div.className = 'video-preview';
+            div.innerHTML = `
+                <div class="thumbnail-row">
+                <img class="thumbnail" src="${video.thumbnail}">
+                <div class="video-time">${video.time}</div>
+                </div>
+                <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="${video.profile}">
+                </div>
+                <div class="video-info">
+                    <p class="video-title">${video.title}</p>
+                    <p class="video-author">${video.author}</p>
+                    <p class="video-stats">${video.stats}</p>
+                </div>
+                </div>
+            `;
+            videoGrid2.appendChild(div);
+        });
+
+
+        const shortsData = [
+            {
+                thumbnail: 'assets/images/shorts-thumbnail-1.jpg',
+                title: '여름 여행지 추천! #여름 #여행',
+                views: '조회수 120만회'
+            },
+            {
+                thumbnail: 'assets/images/shorts-thumbnail-2.jpg',
+                title: '트렌디한 버블 텍스트 3초만에 만드는 방법😎',
+                views: '조회수 2만회'
+            },
+            {
+                thumbnail: 'assets/images/shorts-thumbnail-3.jpg',
+                title: '느낌 좋은 노래 모음',
+                views: '조회수 351만회'
+            },
+            {
+                thumbnail: 'assets/images/shorts-thumbnail-4.jpg',
+                title: '미리듣기가 풀버전인 곡',
+                views: '조회수 217만회'
+            },
+            {
+                thumbnail: 'assets/images/shorts-thumbnail-5.jpg',
+                title: '사진 잘 찍는 방법📸',
+                views: '조회수 68만회'
+            }
+        ];
+
+        const shortsGrid = document.querySelector('.shorts-grid');
+
+        shortsData.forEach(short => {
+            const div = document.createElement('div');
+            div.className = 'shorts-item';
+            div.innerHTML = `
+                <img src="${short.thumbnail}" alt="${short.title}">
+                <div class="shorts-title">${short.title}</div>
+                <div class="shorts-views">${short.views}</div>
+            `;
+            shortsGrid.appendChild(div);
+        });
+
+    </script>
+</body>
+</html>
